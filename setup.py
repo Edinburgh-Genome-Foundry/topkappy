@@ -15,5 +15,5 @@ setup(
     license='MIT',
     keywords="simulation biology modeling complex kappa binding",
     packages=find_packages(exclude='docs'),
-    install_requires=['kappy', 'networks', 'matplotlib', 'numpy',
+    install_requires=['kappy', 'networkx', 'matplotlib', 'numpy',
                       'termcolor'])
