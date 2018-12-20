@@ -1,7 +1,7 @@
 .. raw:: html
 
     <p align="center">
-    <img alt="topkappy Logo" title="topkappy Logo" src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/docs/title.png" width="700">
+    <img alt="topkappy Logo" title="topkappy Logo" src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/docs/title.png" width="600">
     <br /><br />
     </p>
 
@@ -131,7 +131,7 @@ And here is how you plot the products present at the end of the simulation:
 .. raw:: html
 
     <p align="center">
-    <img src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/examples/basic_example_agents_graph.png" width="640">
+    <img src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/examples/basic_example_agents_graphs.png" width="640">
     </p> 
 
 Installation
