@@ -34,8 +34,9 @@ class KappaModel:
 
     def _kappa_script_for_initial_conditions(self):
         return "\n".join([
-            '%%init: %d %s()' % (n, species)
-            for species, n  in self.initial_conditions.items()
+            '%%init: %d %s()' % (
+                n, agent.name if isinstance(agent, KappaAgent) else agent)
+            for agent, n  in self.initial_conditions.items()
         ])
 
     def _kappa_script_for_snapshots(self):

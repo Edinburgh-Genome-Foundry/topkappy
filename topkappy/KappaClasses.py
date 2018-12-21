@@ -7,7 +7,7 @@ class KappaAgent:
     def _kappa_declaration(self):
         return "%%agent: %s(%s)" % (self.name, ", ".join(self.sites))
     def __str__(self):
-        return self.kappa_declaration()
+        return self._kappa_declaration()
 
 class KappaSiteState:
     
