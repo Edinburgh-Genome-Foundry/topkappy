@@ -40,7 +40,7 @@ def test_basic_example(tmpdir):
                 rate=2.1e-2
             )
         ],
-        initial_conditions={
+        initial_quantities={
             'A': 100,
             'B': 100,
             'C': 100,
@@ -72,7 +72,7 @@ def test_error():
             KappaAgent('E;## THIS ERROR', ('c', 'd'))
         ],
         rules = [],
-        initial_conditions={},
+        initial_quantities={},
         duration=10,
         snapshot_times={},
         plots=[]

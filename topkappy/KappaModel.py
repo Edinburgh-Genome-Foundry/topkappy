@@ -4,13 +4,13 @@ from .FormattedKappaError import FormattedKappaError
 
 class KappaModel:
     
-    def __init__(self, agents, rules, initial_conditions,
+    def __init__(self, agents, rules, initial_quantities,
                  snapshot_times=None, plots=(), plot_period=0.1,
                  duration=None, stop_condition=None):
         
         self.agents = agents
         self.rules = rules
-        self.initial_conditions = initial_conditions
+        self.initial_quantities = initial_quantities
         self.snapshot_times  = snapshot_times or {}
         self.plots  = list(plots)
         self.set_parameters(duration=duration, stop_condition=stop_condition,
@@ -32,11 +32,11 @@ class KappaModel:
     def _kappa_script_for_rules(self):
         return "\n".join([r._kappa() for r in self.rules])
 
-    def _kappa_script_for_initial_conditions(self):
+    def _kappa_script_for_initial_quantities(self):
         return "\n".join([
             '%%init: %d %s()' % (
                 n, agent.name if isinstance(agent, KappaAgent) else agent)
-            for agent, n  in self.initial_conditions.items()
+            for agent, n  in self.initial_quantities.items()
         ])
 
     def _kappa_script_for_snapshots(self):
@@ -62,7 +62,7 @@ class KappaModel:
         return "\n\n".join([
             self._kappa_script_for_agents_declarations(),
             self._kappa_script_for_rules(),
-            self._kappa_script_for_initial_conditions(),
+            self._kappa_script_for_initial_quantities(),
             self._kappa_script_for_snapshots(),
             self._kappa_script_for_plotted(),
         ])

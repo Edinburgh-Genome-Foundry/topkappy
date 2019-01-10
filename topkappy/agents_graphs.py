@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def snapshot_agent_nodes_to_graph(nodes):
+def snapshot_agent_nodes_to_graph(nodes, with_ports=True):
     graph = nx.Graph()
     for i, node in enumerate(nodes):
         graph.add_node(i, node_type='agent', node_name=node['node_type'])
@@ -16,13 +16,28 @@ def snapshot_agent_nodes_to_graph(nodes):
                 for link in site_data['port_links']:
                     graph.add_edge((i, j), tuple(link), edge_type='link',
                                    weight=1)
+    if not with_ports:
+        for node_id, node in list(graph.nodes.items()):
+            if node['node_type'] == 'agent':
+                node_name = node['node_name']
+                for neighbor in list(graph.neighbors(node_id)):
+                    graph.remove_edge(node_id, neighbor)
+                    graph = nx.contracted_nodes(graph, node_id, neighbor)
+                graph.nodes[node_id]['node_name'] = node_name 
     return graph
 
 
 def plot_snapshot_agent_nodes_graph(graph, ax=None, positions=None,
-                                    pos_seed=123, figsize=(4, 4)):
-    if positions is None:
+                                    pos_seed=123, figsize=(4, 4),
+                                    layout_method='FR'):
+    if layout_method == 'FR':
         positions = nx.layout.fruchterman_reingold_layout(graph, seed=pos_seed)
+    elif layout_method == 'spectral':
+        positions = nx.layout.spectral_layout(graph)
+    elif layout_method == 'spring':
+        positions = nx.layout.spring_layout(graph, seed=seed)
+    else:
+        raise ValueError('Unsupported layout_method %s' % layout_method)
     if ax is None:
         _, ax = plt.subplots(1, figsize=figsize)
     ax.axis('off')
@@ -44,7 +59,8 @@ def plot_snapshot_agent_nodes_graph(graph, ax=None, positions=None,
                 fontdict=dict(weight='bold' if is_agent else 'normal'))
 
 
-def plot_snapshot_agents(agents, columns='auto', ax_inches=3, freq_cutoff=0):
+def plot_snapshot_agents(agents, with_ports=True, columns='auto', ax_inches=3,
+                         layout_method='FR', freq_cutoff=0):
     total_agents = sum(n for n, data in agents)
     # Normalize frequencies, filter, and sort agents.
     agents = sorted([
@@ -60,8 +76,9 @@ def plot_snapshot_agents(agents, columns='auto', ax_inches=3, freq_cutoff=0):
     for ax in axes.flatten():
         ax.axis('off')
     for ax, (frequency, nodes) in zip(axes.flatten(), agents):
-        graph = snapshot_agent_nodes_to_graph(nodes)
-        plot_snapshot_agent_nodes_graph(graph, ax=ax)
+        graph = snapshot_agent_nodes_to_graph(nodes, with_ports=with_ports)
+        plot_snapshot_agent_nodes_graph(graph, ax=ax,
+                                        layout_method=layout_method)
         ax.set_title("%.01f%%\n" % frequency)
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.8, top=0.8)

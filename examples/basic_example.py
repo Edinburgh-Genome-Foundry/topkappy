@@ -35,7 +35,7 @@ model = KappaModel(
             rate=2.1e-2
         )
     ],
-    initial_conditions={
+    initial_quantities={
         'A': 100,
         'B': 100,
         'C': 100,
