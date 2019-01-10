@@ -49,3 +49,4 @@ nosetests.xml
 
 .cache
 .vscode
+docs/_build
