@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Topkappy - Reference manual &mdash; topkappy 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/main.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="topkappy 0.1.0 documentation" href="index.html"/>
+        <link rel="prev" title="Example" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> topkappy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Example</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Topkappy - Reference manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#kappa-models">Kappa Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#result-analysis">Result analysis</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">topkappy</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Topkappy - Reference manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ref.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="topkappy-reference-manual">
+<span id="reference"></span><h1>Topkappy - Reference manual<a class="headerlink" href="#topkappy-reference-manual" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kappa-models">
+<h2>Kappa Models<a class="headerlink" href="#kappa-models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="topkappy.KappaModel.KappaModel">
+<em class="property">class </em><code class="descclassname">topkappy.KappaModel.</code><code class="descname">KappaModel</code><span class="sig-paren">(</span><em>agents</em>, <em>rules</em>, <em>initial_quantities</em>, <em>snapshot_times=None</em>, <em>plots=()</em>, <em>plot_time_step=0.1</em>, <em>duration=None</em>, <em>stop_condition=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/topkappy/KappaModel.html#KappaModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.KappaModel.KappaModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to represent Kappa models and create corresponding Kappa scripts.</p>
+<p>See the README example for a quick intro.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>agents</strong></p>
+<blockquote>
+<div><p>List of all KappaAgent in the model</p>
+</div></blockquote>
+<p><strong>rules</strong></p>
+<blockquote>
+<div><p>List of all KappaRule in the model</p>
+</div></blockquote>
+<p><strong>initial_quantities</strong></p>
+<blockquote>
+<div><p>Either a dict {agent_name: initial_quantity} or a single integer
+if all agents start with the same initial quantity. Note that the
+more initial agents, the less noisy the simulation results</p>
+</div></blockquote>
+<p><strong>duration</strong></p>
+<blockquote>
+<div><p>Virtual duration of the simulation, in seconds</p>
+</div></blockquote>
+<p><strong>snapshot_times</strong></p>
+<blockquote>
+<div><p>A dict {snapshot_name: time}, e.g. {‘end’: 10}. The snapshot can then
+be accessed as simulation_results[‘snapshots’][‘end’]</p>
+</div></blockquote>
+<p><strong>plots</strong></p>
+<blockquote>
+<div><p>List of Kappa expressions to plot. Each list element can be either
+a string (a Kappa expression like <code class="docutils literal"><span class="pre">|A(.)|</span></code>) or a KappaSiteState like
+<code class="docutils literal"><span class="pre">[KappaSiteState('B',</span> <span class="pre">'b',</span> <span class="pre">'.'),</span> <span class="pre">KappaSiteState('C',</span> <span class="pre">'c',</span> <span class="pre">'.')]</span></code></p>
+</div></blockquote>
+<p><strong>plot_time_step</strong></p>
+<blockquote>
+<div><p>Time interval between two points when gathering data for plotting.</p>
+</div></blockquote>
+<p><strong>stop_condition</strong></p>
+<blockquote class="last">
+<div><p>String representing a Kappa stopping condition. If none is provided,
+the simulation stops after the provided <code class="docutils literal"><span class="pre">duration</span></code> is reached.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="topkappy.KappaClasses.KappaAgent">
+<em class="property">class </em><code class="descclassname">topkappy.KappaClasses.</code><code class="descname">KappaAgent</code><span class="sig-paren">(</span><em>name</em>, <em>sites</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/topkappy/KappaClasses.html#KappaAgent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.KappaClasses.KappaAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to represent a Kappa agent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong></p>
+<blockquote>
+<div><p>Agent name, e.g. ‘A’</p>
+</div></blockquote>
+<p><strong>sites</strong></p>
+<blockquote class="last">
+<div><p>List of sites, e.g. [‘a1’, ‘a2’]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="topkappy.KappaClasses.KappaSiteState">
+<em class="property">class </em><code class="descclassname">topkappy.KappaClasses.</code><code class="descname">KappaSiteState</code><span class="sig-paren">(</span><em>agent</em>, <em>site</em>, <em>state='.'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/topkappy/KappaClasses.html#KappaSiteState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.KappaClasses.KappaSiteState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to represent a Kappa site state like ‘A(x[.])’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>agent</strong></p>
+<blockquote>
+<div><p>A KappaAgent object</p>
+</div></blockquote>
+<p><strong>site</strong></p>
+<blockquote>
+<div><p>Name of the site. Should be a name in agent.sites</p>
+</div></blockquote>
+<p><strong>state</strong></p>
+<blockquote class="last">
+<div><p>The site state, e.g. ‘.’, ‘1’, 2, etc.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="topkappy.KappaClasses.KappaRule">
+<em class="property">class </em><code class="descclassname">topkappy.KappaClasses.</code><code class="descname">KappaRule</code><span class="sig-paren">(</span><em>name</em>, <em>reactants</em>, <em>sense</em>, <em>products</em>, <em>rate</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/topkappy/KappaClasses.html#KappaRule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.KappaClasses.KappaRule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to represent a Kappa rule. Possibly very incomplete.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong></p>
+<blockquote>
+<div><p>Name of the rule</p>
+</div></blockquote>
+<p><strong>reactants</strong></p>
+<blockquote>
+<div><p>List of KappaSiteState that are consumed by the rule</p>
+</div></blockquote>
+<p><strong>sense</strong></p>
+<blockquote>
+<div><p>String arrow like ‘-&gt;’ or ‘&lt;-&gt;’</p>
+</div></blockquote>
+<p><strong>products</strong></p>
+<blockquote>
+<div><p>List of KappaSiteState that are produced by the rule</p>
+</div></blockquote>
+<p><strong>rate</strong></p>
+<blockquote class="last">
+<div><p>Value indicating the frequency at which the rule happens. (or pair of
+values if sense is ‘&lt;-&gt;’</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="topkappy.FormattedKappaError.FormattedKappaError">
+<em class="property">class </em><code class="descclassname">topkappy.FormattedKappaError.</code><code class="descname">FormattedKappaError</code><a class="reference internal" href="_modules/topkappy/FormattedKappaError.html#FormattedKappaError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.FormattedKappaError.FormattedKappaError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to raise and pretty-print Kappa script syntax errors.</p>
+<p>When Kappa complains that the script doesn’t make sense (through kappy),
+you can catch the error, pass it to FormattedKappaError.from_kappa_error()
+and reraise it. The resulting error will nicely print the errors in
+context.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kappa_client</span> <span class="o">=</span> <span class="n">kappy</span><span class="o">.</span><span class="n">KappaStd</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kappa_client</span><span class="o">.</span><span class="n">add_model_string</span><span class="p">(</span><span class="n">model_string</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">kappa_client</span><span class="o">.</span><span class="n">project_parse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">except</span> <span class="n">kappy</span><span class="o">.</span><span class="n">KappaError</span> <span class="k">as</span> <span class="n">kappa_error</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">raise</span> <span class="n">FormattedKappaError</span><span class="o">.</span><span class="n">from_kappa_error</span><span class="p">(</span><span class="n">kappa_error</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                               <span class="n">model_string</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<p class="rubric">Methods</p>
+</dd></dl>
+
+</div>
+<div class="section" id="result-analysis">
+<h2>Result analysis<a class="headerlink" href="#result-analysis" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="topkappy.agents_graphs.plot_snapshot_agents">
+<code class="descclassname">topkappy.agents_graphs.</code><code class="descname">plot_snapshot_agents</code><span class="sig-paren">(</span><em>agents</em>, <em>with_ports=True</em>, <em>columns='auto'</em>, <em>ax_inches=3</em>, <em>layout_method='FR'</em>, <em>freq_cutoff=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/topkappy/agents_graphs.html#plot_snapshot_agents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.agents_graphs.plot_snapshot_agents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot graph representations of all complexes in a multi-ax figure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>agents</strong></p>
+<blockquote>
+<div><p>Snapshot agents as provided in the result of <code class="docutils literal"><span class="pre">get_simulation_results()</span></code>
+by <code class="docutils literal"><span class="pre">simulation_results['snapshots']['SNAP_NAME']['snapshot_agents']</span></code></p>
+</div></blockquote>
+<p><strong>with_ports</strong></p>
+<blockquote>
+<div><p>If true, ports (= agents binding sites) will be represented on the
+figure.</p>
+</div></blockquote>
+<p><strong>columns</strong></p>
+<blockquote>
+<div><p>How many columns (= plots by lines) in the figure ? Keep to “auto”
+for a more-or-less squared figure.</p>
+</div></blockquote>
+<p><strong>ax_inches</strong></p>
+<blockquote>
+<div><p>Size of one figure in inches</p>
+</div></blockquote>
+<p><strong>layout_method</strong></p>
+<blockquote>
+<div><p>Networkx layout method for the graph drawing.
+Either ‘FR’ (fruchterman_reingold), ‘spectral’ or ‘spring’.</p>
+</div></blockquote>
+<p><strong>freq_cutoff</strong></p>
+<blockquote>
+<div><p>All complexes with a number of occurences lower than frew_cutoff in
+the snapshot will be ignored.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">fig, axes</p>
+<blockquote class="last">
+<div><p>Matplotlib “figure” and “axes” list of the multi-ax figure generated.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="topkappy.plot_simulation_time_series.plot_simulation_time_series">
+<code class="descclassname">topkappy.plot_simulation_time_series.</code><code class="descname">plot_simulation_time_series</code><span class="sig-paren">(</span><em>plots_data</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/topkappy/plot_simulation_time_series.html#plot_simulation_time_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#topkappy.plot_simulation_time_series.plot_simulation_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the time series data from a KappaModel simulation</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">KappaModel</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">simulation_results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_simulation_results</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot_simulation_time_series</span><span class="p">(</span><span class="n">simulation_results</span><span class="p">[</span><span class="s1">&#39;plots&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;basic_example_time_series.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zulko.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

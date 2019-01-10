@@ -1,10 +1,12 @@
 import termcolor
 
 def lines_subtext(text, start_line, end_line):
+    """Return the text excerpt between the specified lines."""
     return "\n".join(text.split("\n")[start_line: end_line])
 
 
 def split_text_in_three(text, start_line, start_chr, end_line, end_chr):
+    """Split the text in three using 2 (line, column) control points"""
     lines = text.split("\n")
     before = "\n".join(lines[:start_line] + [lines[start_line][:start_chr]])
     if start_line == end_line:
@@ -20,6 +22,25 @@ def split_text_in_three(text, start_line, start_chr, end_line, end_chr):
 
 
 class FormattedKappaError(Exception):
+    """Class to raise and pretty-print Kappa script syntax errors.
+
+    When Kappa complains that the script doesn't make sense (through kappy),
+    you can catch the error, pass it to FormattedKappaError.from_kappa_error()
+    and reraise it. The resulting error will nicely print the errors in
+    context.
+
+    Examples
+    --------
+
+    >>> kappa_client = kappy.KappaStd()
+    >>> kappa_client.add_model_string(model_string)
+    >>> try:
+    >>>     kappa_client.project_parse()
+    >>> except kappy.KappaError as kappa_error:
+    >>>     raise FormattedKappaError.from_kappa_error(kappa_error,
+    >>>                                                model_string)
+
+    """
     colors = {
         'error': 'red',
         'warning': 'orange'
@@ -45,10 +66,12 @@ class FormattedKappaError(Exception):
     
     @classmethod
     def formatted_string(cls, error_items, model_string):
+        """Create a FormattedKappaError from a Kappy project parsing error."""
         return "\n\n".join(cls._format_error_item(error_item, model_string)
                            for error_item in error_items)
     @classmethod
     def from_kappa_error(cls, kappa_error, model_string):
+        """Create a FormattedKappaError from a Kappy project parsing error."""
         return FormattedKappaError(cls.formatted_string(
             model_string=model_string,
             error_items=kappa_error.args[0]

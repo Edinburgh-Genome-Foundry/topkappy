@@ -4,6 +4,20 @@ import numpy as np
 
 
 def snapshot_agent_nodes_to_graph(nodes, with_ports=True):
+    """Turn a simulation result into a networkx graph of a bio-complex.
+    
+    The "nodes" are from the representation of a snapshot agent.
+
+    If with_port is true, the ports (= agents binding sites) will be
+    represented as nodes in the graph.
+
+    Examples:
+    --------
+
+    >>> sim_results = model.get_simulation_results()
+    >>> n, nodes = sim_results['snapshots']['NAME']['snapshot_agents']
+    >>> graph = snapshot_agent_nodes_to_graph(nodes, with_ports=True)
+    """
     graph = nx.Graph()
     for i, node in enumerate(nodes):
         graph.add_node(i, node_type='agent', node_name=node['node_type'])
@@ -30,12 +44,39 @@ def snapshot_agent_nodes_to_graph(nodes, with_ports=True):
 def plot_snapshot_agent_nodes_graph(graph, ax=None, positions=None,
                                     pos_seed=123, figsize=(4, 4),
                                     layout_method='FR'):
+    """Plot a graph of a complex agent from a snapshot.
+
+    Parameters
+    ----------
+    graph
+      The graph to be plotted.
+
+    ax
+      A matplotlib ax on which to draw the figure. If none is provided, a
+      new figure and ax will be created and returned at the end
+
+    positions
+      A dict {node: position}. A ``layout_method`` can be provided instead
+      for automatic positioning.
+
+    pos_seed
+      A seed to freeze the positions when using semi-random positioning
+      methods.
+
+    figsize
+      Dimensions of the figure in inches (if ax is not provided)
+    
+    layout_method
+      Networkx layout method for the graph drawing.
+      Either 'FR' (fruchterman_reingold), 'spectral' or 'spring'.
+    
+    """
     if layout_method == 'FR':
         positions = nx.layout.fruchterman_reingold_layout(graph, seed=pos_seed)
     elif layout_method == 'spectral':
         positions = nx.layout.spectral_layout(graph)
     elif layout_method == 'spring':
-        positions = nx.layout.spring_layout(graph, seed=seed)
+        positions = nx.layout.spring_layout(graph, seed=pos_seed)
     else:
         raise ValueError('Unsupported layout_method %s' % layout_method)
     if ax is None:
@@ -61,6 +102,39 @@ def plot_snapshot_agent_nodes_graph(graph, ax=None, positions=None,
 
 def plot_snapshot_agents(agents, with_ports=True, columns='auto', ax_inches=3,
                          layout_method='FR', freq_cutoff=0):
+    """Plot graph representations of all complexes in a multi-ax figure.
+    
+    Parameters
+    ----------
+    agents
+      Snapshot agents as provided in the result of ``get_simulation_results()``
+      by ``simulation_results['snapshots']['SNAP_NAME']['snapshot_agents']``
+    
+    with_ports
+      If true, ports (= agents binding sites) will be represented on the
+      figure.
+    
+    columns
+      How many columns (= plots by lines) in the figure ? Keep to "auto"
+      for a more-or-less squared figure.
+    
+    ax_inches
+      Size of one figure in inches
+    
+    layout_method
+      Networkx layout method for the graph drawing.
+      Either 'FR' (fruchterman_reingold), 'spectral' or 'spring'.
+    
+    freq_cutoff
+      All complexes with a number of occurences lower than frew_cutoff in
+      the snapshot will be ignored.
+
+    Returns
+    -------
+
+    fig, axes
+      Matplotlib "figure" and "axes" list of the multi-ax figure generated.
+    """
     total_agents = sum(n for n, data in agents)
     # Normalize frequencies, filter, and sort agents.
     agents = sorted([

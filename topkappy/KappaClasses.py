@@ -1,4 +1,14 @@
 class KappaAgent:
+    """Class to represent a Kappa agent.
+    
+    Parameters
+    ----------
+    name
+      Agent name, e.g. 'A'
+    
+    sites
+      List of sites, e.g. ['a1', 'a2']
+    """
     
     def __init__(self, name, sites):
         self.name = name
@@ -10,13 +20,26 @@ class KappaAgent:
         return self._kappa_declaration()
 
 class KappaSiteState:
+    """Class to represent a Kappa site state like 'A(x[.])'.
+
+    Parameters
+    ----------
+    agent
+      A KappaAgent object
+    
+    site
+      Name of the site. Should be a name in agent.sites
+    
+    state
+      The site state, e.g. '.', '1', 2, etc.
+    """
     
     def __init__(self, agent, site, state='.'):
         if isinstance(agent, KappaAgent) and (site not in agent.sites):
             raise ValueError("%s has not site %s" % (agent, site))
         self.agent = agent
         self.site = site
-        self.state = state
+        self.state = str(state)
     def _kappa(self):
         agent =  self.agent
         if isinstance(agent, KappaAgent):
@@ -24,6 +47,26 @@ class KappaSiteState:
         return "%s(%s[%s])" % (agent, self.site, self.state)
 
 class KappaRule:
+    """Class to represent a Kappa rule. Possibly very incomplete.
+
+    Parameters
+    ----------
+    name
+      Name of the rule
+    
+    reactants
+      List of KappaSiteState that are consumed by the rule
+    
+    sense
+      String arrow like '->' or '<->'
+    
+    products
+      List of KappaSiteState that are produced by the rule
+    
+    rate
+      Value indicating the frequency at which the rule happens. (or pair of
+      values if sense is '<->'
+    """
     
     def __init__(self, name, reactants, sense, products, rate):
         self.name = name

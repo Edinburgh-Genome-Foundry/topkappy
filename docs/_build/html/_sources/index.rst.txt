@@ -164,3 +164,23 @@ More biology software
   :target: https://edinburgh-genome-foundry.github.io/
 
 Topkappy is part of the `EGF Codons <https://edinburgh-genome-foundry.github.io/>`_ synthetic biology software suite for DNA design, manufacturing and validation.
+
+
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+
+    self
+
+
+.. toctree::
+   :hidden:
+   :caption: Reference
+   :maxdepth: 3
+
+   ref
+
+
+.. _Github: https://github.com/EdinburghGenomeFoundry/dnachisel
+.. _PYPI: https://pypi.python.org/pypi/dnachisel
+
