@@ -108,7 +108,7 @@ class KappaModel:
         """Generate the script for declaring what gets plotted."""
         return "\n".join([
             '%%plot: %s' % self._auto_plot_item_string(plot_item)
-            for plot_item  in self.plots
+            for plot_item in self.plots
         ])
 
     def _full_kappa_script(self):
@@ -150,10 +150,16 @@ class KappaModel:
         kappa_client.wait_for_simulation_stop()
         plot_data = kappa_client.simulation_plot()
         plot_data = dict(zip(plot_data['legend'], zip(*plot_data['series'])))
+        snapshots = {}
+        for sid in list(self.snapshot_times) + ['deadlock']:
+            try:
+                snapshots[sid] = kappa_client.simulation_snapshot(sid + '.ka')
+            except:
+                try:
+                    snapshots[sid] = kappa_client.simulation_snapshot(sid)
+                except:
+                    pass
         return {
             'plots': plot_data,
-            'snapshots': {
-                sid: kappa_client.simulation_snapshot(sid)
-                for sid in self.snapshot_times
-            }
+            'snapshots': snapshots
         }
