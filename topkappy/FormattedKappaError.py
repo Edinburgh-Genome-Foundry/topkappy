@@ -52,10 +52,10 @@ class FormattedKappaError(Exception):
         header = "[%s] %s" % (error_item['severity'], error_item['text'])
         colored_header = termcolor.colored(header, color, attrs=('bold',))
         rg = error_item['range']
-        start_line = rg['from_pos']['line'] - 1
-        start_chr = rg['from_pos']['chr']
-        end_line = rg['to_pos']['line'] - 1
-        end_chr = rg['to_pos']['chr']
+        start_line = rg['bline'] - 1
+        start_chr = rg['bchr']
+        end_line = rg.get('eline', start_line) - 1
+        end_chr = rg['echr']
         before, excerpt, after = split_text_in_three(
             model_string, start_line, start_chr, end_line, end_chr)
         colored_excerpt = termcolor.colored(excerpt, color, attrs=('bold',))
