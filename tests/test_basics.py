@@ -48,6 +48,11 @@ def test_basic_example(tmpdir):
     ax.figure.savefig(os.path.join(str(tmpdir), "time_series.png"))
 
     agents_at_end = simulation_results["snapshots"]["end"]["snapshot_agents"]
+
+    # Test layout methods:
+    fig1, axes1 = plot_snapshot_agents(agents_at_end, layout_method="spectral")
+    fig2, axes2 = plot_snapshot_agents(agents_at_end, layout_method="spring")
+
     fig, axes = plot_snapshot_agents(agents_at_end)
     fig.savefig(os.path.join(str(tmpdir), "snapshot.png"))
 
