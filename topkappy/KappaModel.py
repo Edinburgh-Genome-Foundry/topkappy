@@ -14,35 +14,34 @@ class KappaModel:
     ----------
 
     agents
-      List of all KappaAgent in the model
-    
+      List of all KappaAgent in the model.
+
     rules
-      List of all KappaRule in the model
-    
+      List of all KappaRule in the model.
+
     initial_quantities
       Either a dict {agent_name: initial_quantity} or a single integer
       if all agents start with the same initial quantity. Note that the
-      more initial agents, the less noisy the simulation results
+      more initial agents, the less noisy the simulation results/
 
     duration
-      Virtual duration of the simulation, in seconds
+      Virtual duration of the simulation, in seconds/
 
-    snapshot_times 
+    snapshot_times
         A dict {snapshot_name: time}, e.g. {'end': 10}. The snapshot can then
-        be accessed as simulation_results['snapshots']['end']
-    
+        be accessed as simulation_results['snapshots']['end'].
+
     plots
       List of Kappa expressions to plot. Each list element can be either
       a string (a Kappa expression like ``|A(.)|``) or a KappaSiteState like
-      ``[KappaSiteState('B', 'b', '.'), KappaSiteState('C', 'c', '.')]``
-    
+      ``[KappaSiteState('B', 'b', '.'), KappaSiteState('C', 'c', '.')]``.
+
     plot_time_step
       Time interval between two points when gathering data for plotting.
 
     stop_condition
       String representing a Kappa stopping condition. If none is provided,
       the simulation stops after the provided ``duration`` is reached.
-      
     """
 
     def __init__(
@@ -68,9 +67,7 @@ class KappaModel:
             plot_time_step=plot_time_step,
         )
 
-    def set_parameters(
-        self, duration=None, stop_condition=None, plot_time_step=0.1
-    ):
+    def set_parameters(self, duration=None, stop_condition=None, plot_time_step=0.1):
         """(Re-)set some parameters of the model.
 
         Do not attempt to set these parameters otherwise than with this
@@ -111,8 +108,8 @@ class KappaModel:
 
     def _auto_plot_item_string(self, item):
         """Generate the Kappa string for the number of agents or sites.
-        
-        This is mainly a helper for _kappa_script_for_plotted
+
+        This is mainly a helper for _kappa_script_for_plotted.
         """
         if isinstance(item, KappaAgent):
             return "|%s()|" % item.name
@@ -144,7 +141,7 @@ class KappaModel:
 
     def get_simulation_results(self):
         """Run a simulation of the model and return results as a dict.
-        
+
         The result is of the form {plots: {}, snapshots {}}.
 
         The plots dict is of the form {'[T]': [...], 'A()': [...]} where the
@@ -165,9 +162,7 @@ class KappaModel:
         try:
             kappa_client.project_parse()
         except kappy.KappaError as kappa_error:
-            raise FormattedKappaError.from_kappa_error(
-                kappa_error, model_string
-            )
+            raise FormattedKappaError.from_kappa_error(kappa_error, model_string)
         kappa_client.simulation_start(self.parameters)
         kappa_client.wait_for_simulation_stop()
         plot_data = kappa_client.simulation_plot()
@@ -176,6 +171,7 @@ class KappaModel:
 
         _ = kappa_client.simulation_snapshots()
         # print(kappa_client.__dict__)
+
         def get_shapshots():
             snapshots = {}
             for sid in list(self.snapshot_times) + ["deadlock"]:
@@ -196,4 +192,3 @@ class KappaModel:
             time.sleep(0.2)
 
         return {"plots": plot_data, "snapshots": snapshots}
-

@@ -1,7 +1,7 @@
 .. raw:: html
 
     <p align="center">
-    <img alt="topkappy Logo" title="topkappy Logo"
+    <img alt="Topkappy Logo" title="Topkappy Logo"
     src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/docs/_static/images/title.png" width="600">
     <br /><br />
     </p>
@@ -14,14 +14,14 @@
    :target: https://coveralls.io/github/Edinburgh-Genome-Foundry/topkappy?branch=master
 
 
-Topkappy is a Python library to use the Kappa biological modeling system.
+Topkappy is a Python library for using the Kappa biological modeling system.
 It is built on top of ``kappy``, the official Python binding for Kappa, and
 provides a more *pythonic* interface to define models and analyse results:
 Python objects to define agents and rules, methods for visualizing complexes and
 plotting time series, pretty error printing, etc.
 
 Example
---------
+-------
 
 Here is a standard Kappa script defining a situation with 3 agents A, B, C which
 can irreversibly bind together to form A-B-C chains. We end the simulation after
@@ -138,24 +138,24 @@ And here is how you plot the products present at the end of the simulation:
 Installation
 -------------
 
-You can install topkappy through PIP
+You can install topkappy through PIP:
 
 .. code::
 
     sudo pip install topkappy
 
-Alternatively, you can unzip the sources in a folder and type
+Alternatively, you can unzip the sources in a folder and type:
 
 .. code::
 
     sudo python setup.py install
 
 License = MIT
---------------
+-------------
 
-Topkappy is an open-source software originally written at the `Edinburgh Genome Foundry <http://genomefoundry.org>`_ by `Zulko <https://github.com/Zulko>`_ and `released on Github <https://github.com/Edinburgh-Genome-Foundry/topkappy>`_ under the MIT licence (¢ Edinburg Genome Foundry).
+Topkappy is an open-source software originally written at the `Edinburgh Genome Foundry <http://genomefoundry.org>`_ by `Zulko <https://github.com/Zulko>`_ and `released on Github <https://github.com/Edinburgh-Genome-Foundry/topkappy>`_ under the MIT licence (Copyright 2018 Edinburgh Genome Foundry).
 
-Everyone is welcome to contribute !
+Everyone is welcome to contribute!
 
 More biology software
 ---------------------

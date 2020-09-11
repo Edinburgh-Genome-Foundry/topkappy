@@ -1,7 +1,7 @@
 Topkappy
-=========
+========
 
-Topkappy is a Python library built on top ``kappy`` to use the Kappa language (for simulation of biological complexation processes) in a pythonic way, using Python objects to define agents and rules, and with some methods
+Topkappy is a Python library built on top ``kappy`` for using the Kappa language (for simulation of biological complexation processes) in a pythonic way, using Python objects to define agents and rules, and with some methods
 for plotting complexes and time series.
 
 Infos
@@ -13,7 +13,7 @@ Infos
 
   pip install topkappy
 
-**Github Page**
+**Github Page:**
 
 `<https://github.com/Edinburgh-Genome-Foundry/topkappy>`_
 
