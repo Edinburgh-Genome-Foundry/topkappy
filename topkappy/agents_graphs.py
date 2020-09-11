@@ -90,7 +90,7 @@ def plot_snapshot_agent_nodes_graph(
             lw=4 if is_port else 1,
         )
     for node, pos in positions.items():
-        graph_node = graph.node[node]
+        graph_node = graph.nodes[node]
         is_agent = graph_node["node_type"] == "agent"
         ax.text(
             pos[0],
