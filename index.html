@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Example &mdash; topkappy 0.1.0 documentation</title>
+  <title>Example &mdash; topkappy 0.2.3 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/main.css" type="text/css" />
 
   
   
@@ -17,47 +21,37 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/css/main.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="topkappy 0.1.0 documentation" href="#"/>
-        <link rel="next" title="Topkappy - Reference manual" href="ref.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Topkappy - Reference manual" href="ref.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="#" class="icon icon-home"> topkappy
+            <a href="#" class="icon icon-home" alt="Documentation Home"> topkappy
           
 
           
@@ -67,7 +61,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.2.3
               </div>
             
           
@@ -84,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -102,13 +97,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">topkappy</a>
@@ -116,9 +112,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -139,7 +136,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
       <li>Example</li>
     
@@ -161,13 +158,13 @@
            <div itemprop="articleBody">
             
   <p align="center">
-<img alt="topkappy Logo" title="topkappy Logo"
+<img alt="Topkappy Logo" title="Topkappy Logo"
 src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/docs/_static/images/title.png" width="600">
 <br /><br />
 </p><a class="reference external image-reference" href="https://travis-ci.org/Edinburgh-Genome-Foundry/topkappy"><img alt="Travis CI build status" src="https://travis-ci.org/Edinburgh-Genome-Foundry/topkappy.svg?branch=master" /></a>
 <a class="reference external image-reference" href="https://coveralls.io/github/Edinburgh-Genome-Foundry/topkappy?branch=master"><img alt="https://coveralls.io/repos/github/Edinburgh-Genome-Foundry/topkappy/badge.svg?branch=master" src="https://coveralls.io/repos/github/Edinburgh-Genome-Foundry/topkappy/badge.svg?branch=master" /></a>
-<p>Topkappy is a Python library to use the Kappa biological modeling system.
-It is built on top of <code class="docutils literal"><span class="pre">kappy</span></code>, the official Python binding for Kappa, and
+<p>Topkappy is a Python library for using the Kappa biological modeling system.
+It is built on top of <code class="docutils literal notranslate"><span class="pre">kappy</span></code>, the official Python binding for Kappa, and
 provides a more <em>pythonic</em> interface to define models and analyse results:
 Python objects to define agents and rules, methods for visualizing complexes and
 plotting time series, pretty error printing, etc.</p>
@@ -176,7 +173,7 @@ plotting time series, pretty error printing, etc.</p>
 <p>Here is a standard Kappa script defining a situation with 3 agents A, B, C which
 can irreversibly bind together to form A-B-C chains. We end the simulation after
 10 (virtual) seconds and take a snapshot.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span>%agent: A(a, b)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%agent: A(a, b)
 %agent: B(b, c)
 %agent: C(c, d)
 
@@ -194,7 +191,7 @@ can irreversibly bind together to form A-B-C chains. We end the simulation after
 </pre></div>
 </div>
 <p>Now here is the same model defined in Python with Topkappy:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">topkappy</span> <span class="k">import</span> <span class="n">KappaModel</span><span class="p">,</span> <span class="n">KappaAgent</span><span class="p">,</span> <span class="n">KappaRule</span><span class="p">,</span> <span class="n">KappaSiteState</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">topkappy</span> <span class="kn">import</span> <span class="n">KappaModel</span><span class="p">,</span> <span class="n">KappaAgent</span><span class="p">,</span> <span class="n">KappaRule</span><span class="p">,</span> <span class="n">KappaSiteState</span><span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">KappaModel</span><span class="p">(</span>
     <span class="n">agents</span> <span class="o">=</span> <span class="p">[</span>
@@ -253,7 +250,7 @@ complex and dynamic models with dozens of agents and rules.</p>
 <p>Topkappy also makes it easy to simulate the result and get the final data, and
 provide a few utilities to vizualize the results. For instance let us plot
 the two time series records during the simulation:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">topkappy</span> <span class="k">import</span> <span class="n">plot_simulation_time_series</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">topkappy</span> <span class="kn">import</span> <span class="n">plot_simulation_time_series</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_simulation_time_series</span><span class="p">(</span><span class="n">simulation_results</span><span class="p">[</span><span class="s1">&#39;plots&#39;</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;basic_example_time_series.png&#39;</span><span class="p">)</span>
 </pre></div>
@@ -261,7 +258,7 @@ the two time series records during the simulation:</p>
 <p align="center">
 <img src="https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/topkappy/master/examples/basic_example_time_series.png" width="640">
 </p><p>And here is how you plot the products present at the end of the simulation:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">end_agents</span> <span class="o">=</span> <span class="n">simulation_results</span><span class="p">[</span><span class="s1">&#39;snapshots&#39;</span><span class="p">][</span><span class="s1">&#39;end&#39;</span><span class="p">][</span><span class="s1">&#39;snapshot_agents&#39;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">end_agents</span> <span class="o">=</span> <span class="n">simulation_results</span><span class="p">[</span><span class="s1">&#39;snapshots&#39;</span><span class="p">][</span><span class="s1">&#39;end&#39;</span><span class="p">][</span><span class="s1">&#39;snapshot_agents&#39;</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plot_snapshot_agents</span><span class="p">(</span><span class="n">end_agents</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;basic_example_agents_graphs.png&#39;</span><span class="p">)</span>
 </pre></div>
@@ -271,19 +268,19 @@ the two time series records during the simulation:</p>
 </p></div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>You can install topkappy through PIP</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">topkappy</span>
+<p>You can install topkappy through PIP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">topkappy</span>
 </pre></div>
 </div>
-<p>Alternatively, you can unzip the sources in a folder and type</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<p>Alternatively, you can unzip the sources in a folder and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="license-mit">
 <h1>License = MIT<a class="headerlink" href="#license-mit" title="Permalink to this headline">¶</a></h1>
-<p>Topkappy is an open-source software originally written at the <a class="reference external" href="http://genomefoundry.org">Edinburgh Genome Foundry</a> by <a class="reference external" href="https://github.com/Zulko">Zulko</a> and <a class="reference external" href="https://github.com/Edinburgh-Genome-Foundry/topkappy">released on Github</a> under the MIT licence (¢ Edinburg Genome Foundry).</p>
-<p>Everyone is welcome to contribute !</p>
+<p>Topkappy is an open-source software originally written at the <a class="reference external" href="http://genomefoundry.org">Edinburgh Genome Foundry</a> by <a class="reference external" href="https://github.com/Zulko">Zulko</a> and <a class="reference external" href="https://github.com/Edinburgh-Genome-Foundry/topkappy">released on Github</a> under the MIT licence (Copyright 2018 Edinburgh Genome Foundry).</p>
+<p>Everyone is welcome to contribute!</p>
 </div>
 <div class="section" id="more-biology-software">
 <h1>More biology software<a class="headerlink" href="#more-biology-software" title="Permalink to this headline">¶</a></h1>
@@ -297,9 +294,7 @@ the two time series records during the simulation:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -315,11 +310,19 @@ the two time series records during the simulation:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zulko.
+        
+        &copy; Copyright 2018, Zulko
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -331,37 +334,15 @@ the two time series records during the simulation:</p>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
